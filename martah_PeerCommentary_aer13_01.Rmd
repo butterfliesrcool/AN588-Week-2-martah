@@ -1,0 +1,112 @@
+---
+title: "martah_PeerCommentary_aer13_01"
+author: "Abby_Robinson"
+date: "9/15/2021"
+output: html_document
+---
+---
+- For starters I am entirely unsure what this first chunk does to the R markdown document?? If you guys could help explain it would be greatly appreciated 
+A: I think it just explaining how markdown works, and you can delete it
+
+# Module 4  
+
+## Challenge 1  
+
+``` {r charvector}
+v1<- c("Stately, ", "plump ", "Buck ", "Mulligan ", "came ", "from ", "the ", "stairhead, ", "bearing ", "a ", "bowl ", "of ", "lather ", "on ", "which ", "a ", "mirror ", "and ", "a ", "razor ", "lay ", "crossed.")  
+v1
+v1[seq(from = 1, to = 22, by = 3)]
+```
+A: Might be helpful to explain with the "to" and "by" codes mean
+
+- sooooo I incorrectly ran stringr- that's why the code is typed out like that, and so I think in stringr it would actually be...
+``` {r stringr}
+library(stringr)
+v1<- c("Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.")
+str_split(v1, boundary("word"))
+```
+- I'm still unsure if that is the best way to do it??? I'm also unsure how to the sequence this
+A:I am a little confused about the "boundary("word") code... it works! But I don't get it, but be helpful to explain what that code is doing 
+
+## Challenge 2  
+A: what is the {r setup2} code doing? I've just been writing {r}, just curious! 
+``` {r setup2}
+#setup
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+```
+``` {r columnelements}
+x<-c(m[, 2], m[, 3], m[,6])
+x
+x <- m[, c(2,3,6) ]
+x
+  #gives the elements from columns 2, 3, and 6
+  #unsure if this is suppose to be segmented?
+```
+A: I think combining the columns 2,3,6 in the code I wrote above generates the results as a matrix, rather than segmented 
+```{r xassign}
+x<-c(m[6,], m[8,])   
+x
+  #assigns variable x the elements from rows 6 and 8
+```
+```{r xassign2}
+x<-c(m[2, 2]:m[6, 9])  
+x
+  #assigns the elements from (row 2, column 2) to (row 6, column 9) to the variable x
+```
+
+## Challenge 3
+
+```{r matrixsetup}
+a<-array(c(400:1), dim = c(5, 5, 4, 4))  
+a
+
+a[1, 1, 1, 2]  
+
+a[2, 3, 2, ]
+
+a[1:5, 1:5, 3, 3]  
+```
+A: It might be good to break up the output questions into different chucks, so the output for each piece of code is right below the code in the html, this might make it easier to see what each subset of the matrix returns 
+
+## Challenge 4
+
+```{r taxonomy}
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
+    "Daubentoniidae")
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Strepsirhini
+  Tarsioidea<- c("Tarsiidae")
+  Catarrhini<- c("Cercopithecidae", "Hylobatidae", "Hominidae")
+  Platyrrhini<- c("Cebidae", "Atelidae", "Pitheciidae")
+  Anthropoidea<- list(Catarrhini, Platyrrhini)
+    names(Anthropoidea)<- list("Catarrhini", "Platyrrhini")
+  Haplorhini<- list(Anthropoidea, Tarsioidea)
+    names(Haplorhini)<- list("Anthropoidea", "Tarsioidea")
+Haplorhini
+  Primates<- list(Haplorhini, Strepsirhini)
+    names(Primates)<- list("Haplorhini", "Strepsirhini")
+Primates
+```
+
+## Challenge 5
+
+``` {r lastmatrix}
+m3<-matrix(c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), ncol=5, nrow=3, byrow=TRUE)
+m3
+
+df<-data.frame(m3)
+df
+
+df[, c(2)]<-as.logical(df[, c(2)]) #idk why the values equal true or false? A: I think logical data is true or false, so when you converted the data into logical data, you changed the numbers to true or false values
+df[, c(3)]<-as.factor(df[, c(3)])
+str(df)
+```
+##Peer Commentary 
+1. Overall, I think you did a really good job Marta! There were a few places, particularly in challange 1 and challange 3 where you could annotate your code a little more clearly and break up your code into smaller chuncks so it is easier to see the output associated with each line of code in the html file
+
+2. I think the code I provided for challange 2 will help solve your issues with segmenting 
+
+3. I found your code for challanges 1 and 5 very helpful! looking through your code really helped me gain a bettering understanding of how to address these challanges in my own code 
